@@ -31,14 +31,11 @@ void merging(int low, int mid, int high) {
 
 void sort(int low, int high) {
     int mid;
-    cout << "\n left - thread number:" << omp_get_thread_num() << endl;
     if (low < high) {
         mid = (low + high) / 2;
 
         
         cilk_spawn sort(low, mid);
-        
-	    //printf("\n right - thread number: %d \n", omp_get_thread_num());
         cilk_spawn sort(mid + 1, high);
 
         cilk_sync;
