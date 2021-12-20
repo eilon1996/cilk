@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cilk.h>
+
 
 using namespace std;
 
