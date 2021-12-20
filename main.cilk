@@ -48,7 +48,7 @@ void sort(int low, int high) {
     }
 }
 
-int main() {
+int cilk_main() {
     int i;
 
 
