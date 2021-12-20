@@ -1,4 +1,7 @@
-#include <stdio.h>
+#include <iostream>
+
+using namespace std
+
 #define max 10
 
 int a[11] = { 10, 14, 19, 26, 27, 31, 33, 35, 42, 44, 0 };
@@ -26,7 +29,7 @@ void merging(int low, int mid, int high) {
 
 cilk void sort(int low, int high) {
     int mid;
-    printf("\n left - thread number: %d \n", omp_get_thread_num());
+    cout << "\n left - thread number:" << omp_get_thread_num() << endl;
     if (low < high) {
         mid = (low + high) / 2;
 
@@ -49,16 +52,14 @@ cilk void sort(int low, int high) {
 int main() {
     int i;
 
-    printf("List before sorting\n");
 
     for (i = 0; i <= max; i++)
-        printf("%d ", a[i]);
-#pragma omp parallel
-    {
-        sort(0, max);
-    }
-    printf("\nList after sorting\n");
+        cout <<  a[i];
+    
+    sort(0, max);
+    
+    cout << "\nList after sorting\n";
 
     for (i = 0; i <= max; i++)
-        printf("%d ", a[i]);
+        cout <<  a[i];
 }
