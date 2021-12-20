@@ -50,12 +50,13 @@ int cilk_main() {
 
 
     for (i = 0; i <= max; i++)
-        cout <<  a[i];
-    
+        cout <<  a[i]<< ", ";
+    cout << endl;
     sort(0, max);
     
     cout << "\nList after sorting\n";
 
     for (i = 0; i <= max; i++)
-        cout <<  a[i];
+        cout <<  a[i] << ", ";
+    cout << endl;
 }
