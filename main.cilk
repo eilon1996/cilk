@@ -1,6 +1,6 @@
 #include <iostream>
 
-using namespace std
+using namespace std;
 
 #define max 10
 
@@ -43,9 +43,6 @@ cilk void sort(int low, int high) {
         
 
         merging(low, mid, high);
-    }
-    else {
-        return;
     }
 }
 
