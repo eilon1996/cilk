@@ -29,19 +29,19 @@ void merging(int low, int mid, int high) {
         a[i] = b[i];
 }
 
-cilk void sort(int low, int high) {
+void sort(int low, int high) {
     int mid;
     cout << "\n left - thread number:" << omp_get_thread_num() << endl;
     if (low < high) {
         mid = (low + high) / 2;
 
         
-        spawn sort(low, mid);
+        cilk_spawn sort(low, mid);
         
 	    //printf("\n right - thread number: %d \n", omp_get_thread_num());
-        spawn sort(mid + 1, high);
+        cilk_spawn sort(mid + 1, high);
 
-        sync;
+        cilk_sync;
         
 
         merging(low, mid, high);
