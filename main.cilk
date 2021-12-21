@@ -6,7 +6,8 @@
 
 #define MAX 262144
 
-// compile with cilk++ -o main ./main.cilk
+// compile with 
+// cilk++ -o main ./main.cilk
 // export CILK_NWORKERS=N
 
 using namespace std;
@@ -21,15 +22,19 @@ int cilk_main() {
 	int i = 0;
 	int n = MAX;
 
-	for (i = 0; i < n; i++)
-	{
-		merge[i] = rand();
-	}
     
 
 	    clock_t time = clock();
-        partition(merge, 0, n - 1);
+        for(int j = 0; j < 8; j++){
+            for (i = 0; i < n; i++)
+            {
+                merge[i] = rand();
+            }
+
+            partition(merge, 0, n - 1);
+        }
         time = clock() - time;  
+        time /= 8;
         printf("\ntime: %f\n",(double)time/CLOCKS_PER_SEC);
     }
 	
